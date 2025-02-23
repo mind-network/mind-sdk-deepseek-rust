@@ -1,6 +1,6 @@
 [package]
 name = "mind_sdk_deepseek"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Mind Network"]
 description = "Mind Network Rust SDK"

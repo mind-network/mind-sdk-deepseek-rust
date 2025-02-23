@@ -1,5 +1,5 @@
 # mind-sdk-deepseek-rust
-`mind_sdk_deepseek` is a **Native Rust SDK** by [Mind Network](https://www.mindnetwork.xyz/). DeepSeek will assist user to think and predict and then encrypted by FHE and submit to Mind Network for model consensus. 
+`mind_sdk_deepseek` is a **Native Rust SDK** by [Mind Network](https://www.mindnetwork.xyz/). DeepSeek will assist user as an AI Agent to think and predict, and then encrypted by FHE and submit to Mind Network for model consensus. 
 
 [![mind_sdk_deepseek on crates.io](https://img.shields.io/crates/v/mind_sdk_deepseek)](https://crates.io/crates/mind_sdk_deepseek)
 [![Documentation on docs.rs](https://img.shields.io/badge/docs-docs.rs-blue)](https://docs.rs/mind_sdk_deepseek)
