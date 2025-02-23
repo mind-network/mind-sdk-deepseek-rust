@@ -8,6 +8,34 @@
 [![Github](https://img.shields.io/badge/build-pass-green.svg)](https://github.com/mind-network/mind-sdk-deepseek-rust)
 
 
+## Usage 
+```rust
+// call deepseek to predict
+let prompt = "Please predict BTC price in next 7 days, return must be a positive integer".to_string()
+let client = deepseek_rs::DeepSeekClient::default().unwrap();
+let request = deepseek_rs::client::chat_completions::request::RequestBody::new_messages(vec![
+        deepseek_rs::client::chat_completions::request::Message::new_user_message(prompt)
+    ]).with_model(deepseek_rs::client::chat_completions::request::Model::DeepSeekReasoner);
+let response = client.chat_completions(request).await.unwrap();
+//println!("Reasoning: {}", response.choices[0].message.reasoning_content.unwrap());
+//println!("Answer: {}", response.choices[0].message.content.unwrap());
+        
+// convert deepseek prediction to int type
+let deepseek_prediction = match response.choices[0].clone().message.content.unwrap().parse::<u128>() {
+    Ok(prediction) => prediction,
+    Err(_) => 0,
+};
+        
+// fhe encrypt
+let fhe: mind_sdk_fhe::FheInt = mind_sdk_fhe::FheInt::new_from_public_key_local(&fhe_public_key_fp);
+let ciphertext = mind_sdk_fhe::fhe_client::encrypt(&fhe, "u8", deepseek_prediction.clone());
+let ciphertext_str: String = mind_sdk_fhe::io::serialize_base64(ciphertext)?;
+
+// submit ciphertext onchain
+let result: alloy::rpc::types::TransactionReceipt = self.submit_fhe_encrypted(ciphertext_str).await?;
+```
+
+
 
 ## Quick Start
 
