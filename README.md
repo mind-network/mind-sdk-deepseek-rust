@@ -38,6 +38,8 @@ let result: alloy::rpc::types::TransactionReceipt = self.submit_fhe_encrypted(ci
 
 
 ## Quick Start
+**TFHE-rs-v1.0.0** marks the first official stable release, see more details [here](https://github.com/zama-ai/tfhe-rs/releases/tag/tfhe-rs-1.0.0).
+**Rustc-v1.84.0** is required to compile TFHE-rs v1.0.0. You can upgrade rustc like `rustup update stable`.
 
 ### Install 
 ```toml
